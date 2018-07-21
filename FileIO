@@ -1,0 +1,16 @@
+## File Functions
+
+# Read CSV File
+csvReadFile <- function() {
+        
+        ## initial settings
+        dirDest <- "./data"
+        fileURL <- "https://data.baltimorecity.gov/api/views/dz54-2aru/rows.csv?accesstype=DOWNLOAD"
+        fileDest <- "./data/cameras.csv"
+        
+        ## file read to dest directory
+        if(!file.exists(dirDest)) {dir.create(dirDest)}
+        download.file(fileURL,destfile=fileDest,method="curl")
+        rawdata <- read.csv(fileDest)
+
+}
