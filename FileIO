@@ -13,6 +13,20 @@ fileDest <- "./data/cameras.csv"
 if(!file.exists(dirDest)) {dir.create(dirDest)}
 download.file(fileURL,destfile=fileDest,method="curl")
 rawdata <- read.csv(fileDest)
-
 }
 
+
+## unzip folder of multiple files
+unzipFolder <- function() {
+        
+        library(plyr)
+        
+        ## initial settings
+        dirDest <- "/your/path/here/"
+        
+        ## get all zip files
+        zipF <- list.files(path = dirDest , pattern = "*.zip", full.names = TRUE)
+        
+        # unzip all your files
+        ldply(.data = zipF, .fun = unzip, exdir = outDir)           
+}
